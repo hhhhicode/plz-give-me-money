@@ -1,6 +1,4 @@
-from query import get_candles_handler
-from query import get_graph_handler
-from query import get_moving_average_line_handler
+from service import moving_average_line_service, graph_handler_service, candles_handler_service
 from utils import ip_utils
 import streamlit as st
 
@@ -18,12 +16,12 @@ plotly_config = {
 }
 
 if st.button('그래프 보기'):
-    df = get_candles_handler.fetch_candle_data()
-    df['MA10'] = get_moving_average_line_handler.get_moving_average_line(df, 10)
-    df['MA20'] = get_moving_average_line_handler.get_moving_average_line(df, 20)
-    df['MA60'] = get_moving_average_line_handler.get_moving_average_line(df, 60)
+    df = candles_handler_service.fetch_candle_data()
+    sorted_df = df.sort_values(by='candle_date_time_kst', ascending=True, inplace=False)
+    moving_average_line_service.add_mv(sorted_df, 10)
+    moving_average_line_service.add_mv(sorted_df, 20)
+    moving_average_line_service.add_mv(sorted_df, 60)
 
-    fig = get_graph_handler.plot_candlestick(df)
-
+    fig = graph_handler_service.plot_candlestick(df)
 
     st.plotly_chart(fig, config=plotly_config)
