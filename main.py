@@ -17,10 +17,7 @@ plotly_config = {
 
 if st.button('그래프 보기'):
     df = candles_handler_service.fetch_candle_data()
-    sorted_df = df.sort_values(by='candle_date_time_kst', ascending=True, inplace=False)
-    moving_average_line_service.add_mv(sorted_df, 10)
-    moving_average_line_service.add_mv(sorted_df, 20)
-    moving_average_line_service.add_mv(sorted_df, 60)
+    moving_average_line_service.add_mv(df, [10, 20, 60])
 
     fig = graph_handler_service.plot_candlestick(df)
 
