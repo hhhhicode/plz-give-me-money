@@ -9,4 +9,4 @@ st.write(ip_utils.get_internal_ip_address())
 
 st.write(ip_utils.get_external_ip())
 
-st.write(get_candles_handler.get_candles(15, "KRW-BTC", 200))
+st.write(get_candles_handler.get_candles("KRW-BTC", 15, 200))
