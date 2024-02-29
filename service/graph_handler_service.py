@@ -35,3 +35,9 @@ def plot_candlestick(df):
         yaxis_tickformat=','  # 천 단위 구분자를 사용하여 포맷 설정
     )
     return fig
+
+
+def apply_color(df, fig):
+    for i in range(len(df) - 1):
+        if df['color'].iloc[i] == 'red':
+            fig.add_trace(go.Scatter(x=[df]))
