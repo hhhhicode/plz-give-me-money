@@ -8,6 +8,15 @@ def plot_candlestick(df):
                                          low=df['low_price'],
                                          close=df['trade_price'])])
 
+    # 이동 평균선
+    fig.add_trace(go.Scatter(x=df['candle_date_time_kst'], y=df['MA10'], mode='lines', name='MA 10',
+                             line=dict(color='blue', width=1)))
+    fig.add_trace(go.Scatter(x=df['candle_date_time_kst'], y=df['MA20'], mode='lines', name='MA 20',
+                             line=dict(color='red', width=1)))
+    fig.add_trace(go.Scatter(x=df['candle_date_time_kst'], y=df['MA60'], mode='lines', name='MA 60',
+                             line=dict(color='green', width=1)))
+
+    # 레이아웃 설정
     fig.update_layout(
         xaxis=dict(
             showgrid=True,  # x축 격자무늬 표시
