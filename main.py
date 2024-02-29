@@ -12,7 +12,8 @@ st.write(ip_utils.get_external_ip())
 # Plotly 그래프의 config 설정을 분리하여 정의
 plotly_config = {
     "scrollZoom": True,
-    "dragMode": False
+    "dragMode": False,
+    "staticPlot": True   # 모든 인터랙티브 기능 비활성화
 }
 
 if st.button('그래프 보기'):
