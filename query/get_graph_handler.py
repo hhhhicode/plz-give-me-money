@@ -9,4 +9,4 @@ def plot_candlestick(df):
                                          close=df['trade_price'])])
 
     fig.update_layout(xaxis_rangeslider_visible=False)  # 레인지 슬라이더 비활성화
-    fig.show()
+    return fig
