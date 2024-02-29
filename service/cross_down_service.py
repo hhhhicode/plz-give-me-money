@@ -19,4 +19,3 @@ def add_cross_down_color(df, fig):
                                      mode='lines',
                                      line=dict(color=df['color'].iloc[i], width=2),
                                      showlegend=False))
-    fig.update_layout(title='Value with MA10 and MA20', xaxis_rangeslider_visible=False)
