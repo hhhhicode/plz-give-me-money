@@ -11,4 +11,4 @@ st.write(ip_utils.get_external_ip())
 
 if st.button('그래프 보기'):
     df = get_candles_handler.fetch_candle_data()
-    st.plotly_chart(get_graph_handler.plot_candlestick(df), use_container_width=True)
+    st.plotly_chart(get_graph_handler.plot_candlestick(df), use_container_width=True, config={"scrollZoom": True})
