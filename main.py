@@ -1,5 +1,6 @@
 from service import moving_average_line_service, graph_handler_service, candles_handler_service
 from utils import ip_utils
+import numpy as np
 import streamlit as st
 
 st.title('plz give me money')
@@ -18,6 +19,8 @@ plotly_config = {
 if st.button('그래프 보기'):
     df = candles_handler_service.fetch_candle_data()
     moving_average_line_service.add_mv(df, [10, 20, 60])
+
+    df['fill_color'] = np.where((df['MA10'] - df['MA20']) < 0, 'rgba(255, 0, 0, 0.3)', 'rgba(0, 0, 0, 0)')
 
     fig = graph_handler_service.plot_candlestick(df)
 

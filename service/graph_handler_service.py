@@ -15,6 +15,9 @@ def plot_candlestick(df):
                              line=dict(color='red', width=1)))
     fig.add_trace(go.Scatter(x=df['candle_date_time_kst'], y=df['MA60'], mode='lines', name='MA 60',
                              line=dict(color='green', width=1)))
+    fig.add_trace(go.Scatter(x=df['candle_date_time_kst'], y=df['MA20'], mode='lines',
+                             fill='tonexty', fillcolor='rgba(255, 0, 0, 0.3)',
+                             line=dict(color='rgba(255, 255, 255, 0)'), showlegend=False))
 
     # 레이아웃 설정
     fig.update_layout(
