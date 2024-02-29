@@ -1,4 +1,4 @@
-from service import moving_average_line_service, graph_handler_service, candles_handler_service, cross_down_service
+from service import moving_average_line_service, graph_handler_service, candles_handler_service
 from utils import ip_utils
 import streamlit as st
 
@@ -20,7 +20,5 @@ if st.button('그래프 보기'):
     moving_average_line_service.add_mv(df, [10, 20, 60])
 
     fig = graph_handler_service.plot_candlestick(df)
-
-    cross_down_service.add_cross_down_color(df, fig)
 
     st.plotly_chart(fig, config=plotly_config)
