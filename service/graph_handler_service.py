@@ -1,4 +1,5 @@
 import plotly.graph_objects as go
+import numpy as np
 
 
 def plot_candlestick(df):
@@ -8,6 +9,12 @@ def plot_candlestick(df):
                                          low=df['low_price'],
                                          close=df['trade_price'])])
 
+    cross_down = (df['MA10'] < df['MA20']) & (df['MA10'].shift(-1) >= df['MA20'].shift(-1))
+    fill_area = df['MA20'].copy()
+    fill_area[~cross_down] = np.nan  # 조건을 만족하지 않는 구간은 NaN으로 설정하여 면적을 채우지 않음
+
+    fig.add_trace(go.Scatter(x=df['candle_date_time_kst'], y=fill_area, fill='tonexty', mode='none', fillcolor='rgba(255, 0, 0, 0.3)'))
+
     # 이동 평균선
     fig.add_trace(go.Scatter(x=df['candle_date_time_kst'], y=df['MA10'], mode='lines', name='MA 10',
                              line=dict(color='white', width=1)))
@@ -15,12 +22,10 @@ def plot_candlestick(df):
                              line=dict(color='red', width=1)))
     fig.add_trace(go.Scatter(x=df['candle_date_time_kst'], y=df['MA60'], mode='lines', name='MA 60',
                              line=dict(color='green', width=1)))
-    fig.add_trace(go.Scatter(x=df['candle_date_time_kst'], y=df['MA10'], mode='lines',
-                             fill='tonexty', fillcolor='rgba(255, 0, 0, 0.3)',
-                             line=dict(color='rgba(255, 255, 255, 0)'), showlegend=False))
 
     # 레이아웃 설정
     fig.update_layout(
+        title='Candles with Moving Averages',
         xaxis=dict(
             showgrid=True,  # x축 격자무늬 표시
             gridcolor='LightGrey',  # 격자무늬 색상 설정
