@@ -14,9 +14,9 @@ getCandlesUrl = ("https://api.upbit.com/v1/candles/minutes/"
                  + "&count="
                  + str(candlesCount))
 getCandlesHeaders = {"accept": "application/json"}
-# response = requests.get(getCandlesUrl, headers=getCandlesHeaders)
-#
-# print(response)
+response = requests.get(getCandlesUrl, headers=getCandlesHeaders)
+
+st.write(response)
 
 st.title('plz give me money')
 
