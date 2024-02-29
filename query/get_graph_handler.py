@@ -10,7 +10,13 @@ def plot_candlestick(df):
 
     fig.update_layout(
         xaxis=dict(
+            showgrid=True,  # x축 격자무늬 표시
+            gridcolor='LightGrey',  # 격자무늬 색상 설정
             tickformat='%Y-%m-%d'
+        ),
+        yaxis=dict(
+            showgrid=True,  # y축 격자무늬 표시
+            gridcolor='LightGrey'  # 격자무늬 색상 설정
         ),
         xaxis_rangeslider_visible=False,  # 레인지 슬라이더 비활성화
         xaxis_title="시간 (KST)",
