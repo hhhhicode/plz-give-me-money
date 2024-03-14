@@ -2,5 +2,9 @@ openai
 streamlit
 requests
 pandas
+pandas_ta
+schedule
 plotly
 numpy
+pyupbit
+python-dotenv
