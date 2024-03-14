@@ -1,11 +1,9 @@
-import os
 import service.my_upbit as my_upbit
 import utils.file_util as file_util
+import streamlit as st
 from openai import OpenAI
-from dotenv import load_dotenv
 
-load_dotenv()
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+client = OpenAI(api_key=st.secrets['OPENAI_API_KEY'])
 
 
 def analyze_data_with_gpt4(data_json):

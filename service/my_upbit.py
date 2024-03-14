@@ -1,13 +1,11 @@
-import os
 import pyupbit
 import pandas as pd
 import pandas_ta as ta
 import json
-from dotenv import load_dotenv
+import streamlit as st
 
 
-load_dotenv()
-upbit = pyupbit.Upbit(os.getenv("UPBIT_ACCESS_KEY"), os.getenv("UPBIT_SECRET_KEY"))
+upbit = pyupbit.Upbit(st.secrets['UPBIT_ACCESS'], st.secrets['UPBIT_SECRET'])
 
 
 def get_current_status():
